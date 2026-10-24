@@ -40,14 +40,13 @@ That's it!
 You can now use the conversion functions directly in your code. If new files are added to tools, you may also import them by adding :
 ```python
 from tools.new_file import *
-#######################################################
 
 ```
 
 For example:
 
 ```python
-speed = knots_to_mps(100)
+speed = kt_to_mps(100)
 distance = ft_to_m(300)
 ```
 
