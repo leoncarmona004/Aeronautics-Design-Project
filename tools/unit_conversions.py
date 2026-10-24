@@ -51,6 +51,12 @@ def kmh_to_ms(kmh):
 def ms_to_kmh(ms):
     return ms * 3.6
 
+def fpm_to_ms(fpm):
+    return fpm * 0.00508
+
+def ms_to_fpm(ms):
+    return ms / 0.00508
+
 # -------------------------
 # FORCE
 # -------------------------
@@ -70,3 +76,13 @@ def hp_to_W(hp):
 
 def W_to_hp(W):
     return W / 745.699871582
+
+# -------------------------
+# ENERGY
+# -------------------------
+
+def J_to_kWh(J):
+    return J * 2.77778e-7
+
+def kWh_to_J(kWh):
+    return kWh / 2.77778e-7

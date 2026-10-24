@@ -80,6 +80,12 @@ eta_prop = 0.75
 P_avg = T_avg * (v_LOF / np.sqrt(2))  # use v_to or v_LOF ? 
 P_shaf_avg = P_avg / eta_prop
 
+# Takeoff energy 
+
+E_g = T_avg * x_g / eta_prop    # ground roll
+E_a = T_avg * x_a / eta_prop    # transition + climb to obstacle, if thrust is held
+E_to = E_g + E_a                # = T_avg * x_target / eta_prop  [J]
+
 print(f"Takeoff weight W_to = {W_to:.2f} N")
 print(f"Wing surface area S = {S:.3f} m^2")
 print(f"Stall speed v_s = {v_s:.2f} m/s")
@@ -90,3 +96,4 @@ print(f"Ground run x_g = {x_g:.2f} m or x_g = {m_to_ft(x_g):.2f} ft")
 print(f"Takeoff thrust T_avg = {T_avg:.2f} N")
 print(f"Takeoff power P_to = {P_avg/1000:.2f} kW or P_to = {W_to_hp(P_avg):.2f} hp")
 print(f"Takeoff power to the shaft : P_to_shaft = {P_shaf_avg/1000:.2f} kW or P_to_shaft = {W_to_hp(P_shaf_avg):.2f} hp")
+print(f"Takeoff energy E_to = {J_to_kWh(E_to):.2f} kWh")

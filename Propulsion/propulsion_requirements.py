@@ -32,11 +32,11 @@ D_prop = l_wing / (n_prop/2 + 0.1 * n_prop/2)
 
 
 # Power at takeoff
-P_1 = 800e3 # [W]
-P_2 = 820e3 # [W]
+
+P_1 = 820e3 # [W]
 
 # Choose the correct power requirement
-P_req = P_2
+P_req = P_1
 
 # Assuming a 50/50 thermal/electric propulsion (equal range):
 P_el = P_req / 2
