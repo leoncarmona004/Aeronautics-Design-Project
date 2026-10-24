@@ -1,32 +1,17 @@
+######################################################
+import sys
+from pathlib import Path
+
+for parent in Path(__file__).resolve().parents:
+    if (parent / "tools").is_dir():
+        sys.path.append(str(parent))
+        break
+
+from tools.unit_conversions import *
+from tools.reusable_functions import *
+#######################################################
+
 import numpy as np
-
-# Unit conversions
-def lb_to_kg(lb):
-    return lb * 0.45359237
-
-def nmi_to_ft(nmi):
-    return nmi * 6076.12
-
-def kt_to_ms(kt):
-    return kt/1.944
-
-def W_to_hp(W):
-    return W * 0.00134102
-
-def ft_to_m(ft):
-    return ft * 0.3048
-
-def m_to_ft(m):
-    return m * 3.28084
-
-def lbf_to_N(lbf):
-    return lbf * 4.44822162  
-
-def N_to_lbf(N):
-    return N / 4.44822162
-
-def hp_to_watts(hp):
-    return hp * 745.7
 
 g = 9.81 # [m/s^2]
 
@@ -35,12 +20,12 @@ g = 9.81 # [m/s^2]
 m_to = 3500 # [kg]
 rho_ground = 1.225 # [kg/m^3]
 mu = 0.02 
-v_s = 22 # [m/s]
+# v_s = 22 # [m/s]
 C_D_0 = 0.025
 e = 0.755
-C_L_max = 3.5
+C_L_max = 4
 AR = 8
-n = 1.2
+n = 1.2 # assumption to be checked!
 x_target = ft_to_m(300) # [m]
 h = ft_to_m(50) # [m]
 
@@ -51,6 +36,7 @@ W_to = m_to * g # [N]
 # S = W_to / (0.5 * rho_ground * v_s**2 * C_L_max)
 
 S = 28.955 # [m^2] fixed wing surface area 
+
 v_s = np.sqrt(W_to / (0.5 * rho_ground * S * C_L_max)) # [m/s]
 
 # Liftoff speed
@@ -84,7 +70,7 @@ for i in range(max_iter):
     T_new = W_to * (v_LOF**2 / (2 * g * x_g) + mu_prime)
 
     error = abs(T_new - T_avg)
-    print(f"Error : {error:.2f}")
+    # print(f"Error : {error:.2f}")
     T_avg = T_new
     if error < tol:
         T_avg = T_new
@@ -95,7 +81,7 @@ P_avg = T_avg * (v_LOF / np.sqrt(2))  # use v_to or v_LOF ?
 P_shaf_avg = P_avg / eta_prop
 
 print(f"Takeoff weight W_to = {W_to:.2f} N")
-print(f"Wing surface area S = {S:.2f} m^2")
+print(f"Wing surface area S = {S:.3f} m^2")
 print(f"Stall speed v_s = {v_s:.2f} m/s")
 print(f"Liftoff speed v_LOF = {v_LOF:.2f} m/s")
 print(f"Liftoff Lift L_LOF = {L_LOF:.2f} N -> C_L_LOF = {C_L_LOF:.2f}")

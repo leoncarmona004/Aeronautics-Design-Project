@@ -1,13 +1,18 @@
+######################################################
+import sys
+from pathlib import Path
+
+for parent in Path(__file__).resolve().parents:
+    if (parent / "tools").is_dir():
+        sys.path.append(str(parent))
+        break
+
+from tools.unit_conversions import *
+from tools.reusable_functions import *
+#######################################################
 
 import numpy as np
 import sympy as sp
-
-# Unit conversions
-def lb_to_kg(lb):
-    return lb * 0.45359237
-
-def nmi_to_ft(nmi):
-    return nmi * 6076.12
 
 # Reference: "Aircraft design: a systems engineering approach" 
 # Note: the pages correspond to those of the pdf, not the textbook

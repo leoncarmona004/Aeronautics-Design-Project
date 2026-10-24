@@ -1,26 +1,17 @@
+######################################################
+import sys
+from pathlib import Path
+
+for parent in Path(__file__).resolve().parents:
+    if (parent / "tools").is_dir():
+        sys.path.append(str(parent))
+        break
+
+from tools.unit_conversions import *
+from tools.reusable_functions import *
+#######################################################
+
 import numpy as np 
-
-# Unit conversions
-def lb_to_kg(lb):
-    return lb * 0.45359237
-
-def nmi_to_ft(nmi):
-    return nmi * 6076.12
-
-def kt_to_ms(kt):
-    return kt/1.944
-
-def W_to_hp(W):
-    return W * 0.00134102
-
-def hp_to_W(hp):
-    return hp * 745.7
-
-def ft_to_m(ft):
-    return ft * 0.3048
-
-def m_to_ft(m):
-    return m * 3.28084
 
 g = 9.81 # [m/s^2]
 
