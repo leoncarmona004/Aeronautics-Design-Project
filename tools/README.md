@@ -46,7 +46,7 @@ from tools.new_file import *
 For example:
 
 ```python
-speed = kt_to_mps(100)
+speed = kt_to_ms(100)
 distance = ft_to_m(300)
 ```
 
