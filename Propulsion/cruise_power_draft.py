@@ -265,7 +265,7 @@ def total_energy():
              (h_c/1000, E_tot[i_c]), xytext=(10,10), textcoords="offset points")
     
 
-plots = 0
+plots = 1
 
 if plots:
     density_vs_altitude()
