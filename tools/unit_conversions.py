@@ -86,3 +86,25 @@ def J_to_kWh(J):
 
 def kWh_to_J(kWh):
     return kWh / 2.77778e-7
+
+# -------------------------
+# TEMPERATURE
+# -------------------------
+
+def F_to_C(F):
+    return (F - 32) * 5/9
+
+def C_to_F(C):
+    return C * 9/5 + 32
+
+def C_to_K(C):
+    return C - 273.15 
+
+def K_to_C(K):
+    return K + 273.15
+
+def F_to_K(F):
+    return (F - 32) * 5/9 + 273.15
+
+def K_to_F(K):
+    return (K - 273.15) * 9/5 + 32
